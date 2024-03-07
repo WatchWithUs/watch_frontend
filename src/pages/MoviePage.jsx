@@ -1,5 +1,5 @@
 function MoviePage(){
-    return <div>Movie Page</div>
+    return <div>Create Form Movie</div>
 }
 
 export default MoviePage

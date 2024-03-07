@@ -29,11 +29,11 @@ function Navbar() {
       </Link>
 
       <Link to="/collection">
-        <button>Collections</button>
+        <button>Create Collections</button>
       </Link>
 
-      <Link to="/collection/create">
-        <button>Create Collection</button>
+      <Link to="/movies">
+        <button>Create Movie</button>
       </Link>
 
       <form onSubmit={handleSearchSubmit}>

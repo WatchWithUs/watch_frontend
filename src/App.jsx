@@ -22,7 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviePage />} />
-        <Route path="/collections" element={<CollectionPage />} />
+        <Route path="/collection" element={<CollectionPage />} />
         <Route path="/signup" element={<Signup />}>
         </Route>
         <Route
@@ -30,7 +30,9 @@ function App() {
           element={<CollectionDetailPage />}
         />
       </Routes>
+      <Footer />
     </Router>
+    
   );
 }
 
