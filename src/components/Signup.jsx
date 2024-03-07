@@ -12,15 +12,15 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${API_URL}/api/signup`, {
+      const response = await axios.post(`${API_URL}/signup`, {
         name: username,
         email: email,
         password: password,
       });
       console.log(response.data);
-      // Lógica adicional após o registro bem-sucedido, como redirecionar o usuário para a página de login
+      
     } catch (error) {
-      console.error("Erro ao registrar:", error);
+      console.error("Error:", error);
     }
   };
 
