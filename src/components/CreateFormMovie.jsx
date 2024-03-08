@@ -4,30 +4,31 @@ import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const DEFAULT_FILM_FORM_VALUES = {
-    title: "",
-    description: "",
-    genre: "",
-    image: "",
-    year: 0,
-    timestamps: true
-}
+// const DEFAULT_FILM_FORM_VALUES = {
+//     title: "",
+//     description: "",
+//     genre: "",
+//     image: "",
+//     year: 0,
+//     timestamps: true
+// }
 
 function CreateFormMovie() {
 
-    const [movie, setMovie] = useState({ ...DEFAULT_FILM_FORM_VALUES });
-    const [title, setTitle] = useState({ ...DEFAULT_FILM_FORM_VALUES });
-    const [description, setDescription] = useState({ ...DEFAULT_FILM_FORM_VALUES });
-    const [genre, setGenre] = useState({ ...DEFAULT_FILM_FORM_VALUES });
-    const [image, setImage] = useState({ ...DEFAULT_FILM_FORM_VALUES });
-    const [year, setYear] = useState({ ...DEFAULT_FILM_FORM_VALUES });
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [genre, setGenre] = useState("");
+    const [image, setImage] = useState("");
+    const [year, setYear] = useState(0);
+    const [movie,setMovie] = useState("");
 
     //const storedToken = localStorage.getItem("authToken");
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
+        const requestBody = { ...movie}
         axios
-            .post(`${API_URL}/movies` ,movie)
+            .post(`${API_URL}/movies` ,requestBody)
             .then((response) => {
                 const newMovie = response.data;
                 // navigate(`/cohorts/details/${newCohort._id}`);
@@ -35,11 +36,29 @@ function CreateFormMovie() {
             .catch((error) => console.log(error));
     };
 
-    const handleTitleInput = e => setTitle(e.target.value);
-    const handleDescriptionInput = e => setDescription(e.target.value);
-    const handleGenreInput = e => setGenre(e.target.value);
-    const handleImageInput = e => setImage(e.target.value);
-    const handleYearInput = e => setYear(e.target.value);
+    //const handleTitleInput = e => setTitle(e.target.value);
+    const handleTitleInput = e => {
+        setTitle(e.target.value);
+        setMovie({ ...movie, title: e.target.value });
+    };
+    const handleDescriptionInput = e => {
+        setDescription(e.target.value);
+        setMovie({ ...movie, description: e.target.value });
+    };
+
+
+    const handleGenreInput = e => {
+        setGenre(e.target.value);
+        setMovie({ ...movie, genre: e.target.value });
+    }
+    const handleImageInput = e => {
+        setImage(e.target.value);
+        setMovie({ ...movie, image: e.target.value });
+    }
+    const handleYearInput = e =>{ 
+        setYear(e.target.value);
+        setMovie({ ...movie, year: e.target.value });
+    }
 
 return (
     <div>
