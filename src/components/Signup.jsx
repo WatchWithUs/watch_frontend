@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Signup.css";
 import axios from "axios";
 
-const API_URL = "http://localhost:5173";
+const API_URL = "http://localhost:5005";//server
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -12,7 +12,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${API_URL}/signup`, {
+      const response = await axios.post(`${API_URL}/auth/signup`, {
         name: username,
         email: email,
         password: password,
