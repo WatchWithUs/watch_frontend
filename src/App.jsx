@@ -23,16 +23,12 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviePage />} />
         <Route path="/collection" element={<CollectionPage />} />
-        <Route path="/signup" element={<Signup />}>
-        </Route>
-        <Route
-          path="/collections/:collectionId"
-          element={<CollectionDetailPage />}
-        />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/collections/:collectionId" element={<CollectionDetailPage />} />
       </Routes>
+
       <Footer />
     </Router>
-    
   );
 }
 

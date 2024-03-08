@@ -13,7 +13,7 @@ function Navbar() {
 
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
-    
+
     try {
       const response = await axios.get(`/api/movies/search?q=${searchTerm}`);
       setSearchResults(response.data.movies);
