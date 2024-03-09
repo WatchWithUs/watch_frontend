@@ -1,46 +1,38 @@
-import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState } from "react";
 import axios from "axios";
 import "./CreateFormMovie.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-// const DEFAULT_FILM_FORM_VALUES = {
-//     title: "",
-//     description: "",
-//     genre: "",
-//     image: "",
-//     year: 0,
-//     timestamps: true
-// }
+const DEFAULT_FILM_FORM_VALUES = {
+    title: "",
+    description: "",
+    genre: "",
+    image: "",
+    year: 0,
+};
 
 function CreateFormMovie() {
 
-    const [movie, setMovie] = useState({ ...DEFAULT_FILM_FORM_VALUES });
-    const [title, setTitle] = useState({ ...DEFAULT_FILM_FORM_VALUES });
-    const [description, setDescription] = useState({ ...DEFAULT_FILM_FORM_VALUES });
-    const [genre, setGenre] = useState({ ...DEFAULT_FILM_FORM_VALUES });
-    const [image, setImage] = useState({ ...DEFAULT_FILM_FORM_VALUES });
-    const [year, setYear] = useState({ ...DEFAULT_FILM_FORM_VALUES });
-
-    //const storedToken = localStorage.getItem("authToken");
+    const [movie, setMovie] = useState(DEFAULT_FILM_FORM_VALUES);
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        const requestBody = { ...movie}
         axios
-            .post(`${API_URL}/movies` ,movie)
+            .post(`${API_URL}/movies`, movie)
             .then((response) => {
                 const newMovie = response.data;
             })
             .catch((error) => console.log(error));
     };
 
-    const handleTitleInput = e => setTitle(e.target.value);
-    const handleDescriptionInput = e => setDescription(e.target.value);
-    const handleGenreInput = e => setGenre(e.target.value);
-    const handleImageInput = e => setImage(e.target.value);
-    const handleYearInput = e => setYear(e.target.value);
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setMovie(prevMovie => ({
+            ...prevMovie,
+            [name]: value
+        }));
+    };
 
     return (
         <div className="form-container">
