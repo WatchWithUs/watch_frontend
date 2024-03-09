@@ -1,0 +1,36 @@
+
+.create-form-collection-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinhamento no início do eixo vertical */
+    height: 100vh;
+  }
+  
+  .create-form-collection-form {
+    max-width: 300px;
+    padding: 20px;
+    background-color: #2c3e50;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-right: 20px; /* Espaçamento à direita para separar o formulário da lista */
+  }
+  
+  .collections-list {
+    display: center; /* Alinhamento horizontal */
+    flex-direction: column; /* Coluna para empilhar as coleções */
+  }
+  
+  .collections-list h2 {
+    color: #fff;
+  }
+  
+  .collections-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Removendo margem padrão da lista */
+  }
+  
+  .collections-list li {
+    margin-bottom: 5px;
+    color: #fff;
+  }
