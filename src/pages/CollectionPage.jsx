@@ -9,7 +9,7 @@ function CollectionPage() {
   useEffect(() => {
     const fetchCollections = async () => {
       try {
-        const response = await axios.get('http://localhost:5005/collection'); // Substitua 'http://localhost:3000' pela URL do seu servidor
+        const response = await axios.get('http://localhost:5005/collection'); 
         setCollections(response.data);
       } catch (error) {
         console.error(error);
@@ -21,7 +21,6 @@ function CollectionPage() {
 
   return (
     <div>
-      <h2>Collections</h2>
       <ul>
         {collections.map(collection => (
           <li key={collection._id}>{collection.title}</li>

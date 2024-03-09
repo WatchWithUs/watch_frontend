@@ -22,6 +22,7 @@ function CreateFormMovie() {
             .post(`${API_URL}/movies`, movie)
             .then((response) => {
                 const newMovie = response.data;
+                setMovie(DEFAULT_FILM_FORM_VALUES); // Limpa os valores do filme após o envio bem-sucedido
             })
             .catch((error) => console.log(error));
     };

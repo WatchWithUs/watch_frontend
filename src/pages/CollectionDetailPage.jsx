@@ -6,9 +6,7 @@ function CollectionDetailPage({ match }) {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    // Aqui você pode fazer uma requisição para o seu backend
-    // para obter os detalhes da coleção com base no ID
-    // Substitua esta parte do código com a lógica real
+
     const fetchCollectionDetail = async () => {
       try {
         const collectionId = match.params.collectionId;
@@ -33,7 +31,6 @@ function CollectionDetailPage({ match }) {
     <div>
       <h1>{collection.name}</h1>
       <p>{collection.description}</p>
-      <h2>Filmes</h2>
       <ul>
         {movies.map(movie => (
           <li key={movie.id}>{movie.title}</li>
