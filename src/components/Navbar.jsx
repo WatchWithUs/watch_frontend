@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import axios from 'axios';
+import Collections from './Collections'; // Importe o componente Collections
 
 function Navbar() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -34,6 +35,10 @@ function Navbar() {
 
       <Link to="/movies">
         <button>Create Movie</button>
+      </Link>
+
+      <Link to="/collections"> {/* Adicione um link para o componente Collections */}
+        <button>View Collections</button>
       </Link>
 
       <form onSubmit={handleSearchSubmit}>
