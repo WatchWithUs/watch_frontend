@@ -1,39 +1,40 @@
 .sign-up-container {
-    width: 300px;
-    margin: 0 auto; /* centralizar horizontalmente */
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  .sign-up-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .sign-up-form label {
-    margin-bottom: 5px;
-  }
-  
-  .sign-up-form input[type="text"],
-  .sign-up-form input[type="email"],
-  .sign-up-form input[type="password"] {
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  .sign-up-form button[type="submit"] {
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  .sign-up-form button[type="submit"]:hover {
-    background-color: #0056b3;
-  }
+  width: 400px;
+  margin: 0 auto; /* Centralize horizontalmente */
+  margin-top: 50px; /* Adicione margem superior para centralizar verticalmente */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: hsla(0, 0%, 0%, 0.226);
+}
+
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.sign-up-form label {
+  margin-bottom: 5px;
+}
+
+.sign-up-form input[type="text"],
+.sign-up-form input[type="email"],
+.sign-up-form input[type="password"] {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.sign-up-form button[type="submit"] {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.sign-up-form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
