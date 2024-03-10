@@ -4,10 +4,19 @@ import "./CreateFormCollection.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
+const DEFAULT_COLLECTION_FORM_VALUES = {
+  title: "",
+  description: "",
+  movies: [],
+};
+
 function CreateFormCollection() {
-  const [collectionName, setCollectionName] = useState("");
-  const [selectedMovie, setSelectedMovie] = useState(null); // Alterado para armazenar apenas um filme selecionado
+  const [collection, setCollection] = useState(DEFAULT_COLLECTION_FORM_VALUES);
   const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    fetchMovies();
+  }, []);
 
   const fetchMovies = async () => {
     try {
@@ -18,70 +27,68 @@ function CreateFormCollection() {
     }
   };
 
-  useEffect(() => {
-    fetchMovies();
-  }, []);
-
-  const handleMovieSelect = (movieId) => {
-    setSelectedMovie(movieId); // Atualiza o filme selecionado para o último clicado
-  };
-
-  const handleSubmit = async (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    if (!collectionName || !selectedMovie) {
-      console.error("Collection name and movie must be selected.");
-      return;
-    }
     try {
-      const response = await axios.post(`${API_URL}/collections`, {
-        name: collectionName,
-        movies: [selectedMovie], // Adiciona apenas o filme selecionado à lista de filmes
-      });
+      const response = await axios.post(`${API_URL}/collection`, collection);
       console.log("Collection created:", response.data);
-      setCollectionName("");
-      setSelectedMovie(null); // Limpa o filme selecionado após a criação da coleção
+      setCollection(DEFAULT_COLLECTION_FORM_VALUES);
     } catch (error) {
       console.error("Error creating collection:", error);
     }
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setCollection((prevCollection) => ({
+      ...prevCollection,
+      [name]: value,
+    }));
+  };
+
+  const handleMovieSelect = (movieId) => {
+    setCollection((prevCollection) => ({
+      ...prevCollection,
+      movies: [...prevCollection.movies, movieId],
+    }));
+  };
+
   return (
     <div className="create-form-collection-container">
-      <form className="create-form-collection-form" onSubmit={handleSubmit}>
-        <label htmlFor="collectionName" className="create-form-collection-label">
-          Collection Name:
-        </label>
+      <h2>Create Collection</h2>
+      <form onSubmit={handleFormSubmit}>
+        <label htmlFor="title">Title:</label>
         <input
           type="text"
-          id="collectionName"
-          value={collectionName}
-          onChange={(e) => setCollectionName(e.target.value)}
-          className="create-form-collection-input"
+          name="title"
+          id="title"
+          value={collection.title}
+          onChange={handleInputChange}
+        />
+        <label htmlFor="description">Description:</label>
+        <input
+          type="text"
+          name="description"
+          id="description"
+          value={collection.description}
+          onChange={handleInputChange}
         />
         <h3>Movies</h3>
         <ul className="create-form-collection-movies">
           {movies.map((movie) => (
-            <li key={movie.id} className="create-form-collection-movie-item">
+            <li key={movie.id}>
               <input
                 type="checkbox"
                 id={`movie-${movie.id}`}
-                checked={selectedMovie === movie.id} // Alterado para verificar se o filme está selecionado
                 onChange={() => handleMovieSelect(movie.id)}
               />
               <label htmlFor={`movie-${movie.id}`}>{movie.title}</label>
-              <button
-                type="button"
-                onClick={() => handleMovieSelect(movie.id)} // Adiciona o filme à coleção ao clicar no botão
-                className="create-form-collection-add-button"
-              >
-                Add to Collection
-              </button>
             </li>
           ))}
         </ul>
-        <button type="submit" className="create-form-collection-button create-form-collection-submit-button">
+        <button type="submit" className="create-form-collection-button">
           Create Collection
-        </button>
+        </button>{" "}
       </form>
     </div>
   );

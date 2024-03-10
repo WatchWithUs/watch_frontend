@@ -1,21 +1,24 @@
+
 .create-form-collection-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Alinhamento no início do eixo vertical */
-  height: 100vh;
+  max-width: 300px;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.create-form-collection-container h2 {
+  text-align: center;
 }
 
 .create-form-collection-form {
-  max-width: 300px;
-  padding: 20px;
-  background-color: #2c3e50;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  margin-right: 20px; /* Espaçamento à direita para separar o formulário da lista */
+  display: flex;
+  flex-direction: column;
 }
 
 .create-form-collection-label {
-  color: #fff; /* Cor do rótulo */
+  margin-bottom: 5px;
 }
 
 .create-form-collection-input {
@@ -24,28 +27,22 @@
 }
 
 .create-form-collection-movies {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
-  margin: 0;
 }
 
 .create-form-collection-movie-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
-.create-form-collection-movie-item label {
-  color: #fff;
-  margin-left: 5px;
-}
-
-.create-form-collection-add-button {
-  padding: 5px 10px;
+.create-form-collection-button {
+  padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
-  margin-left: auto; /* Alinha o botão à direita */
+}
+
+.create-form-collection-button:hover {
+  background-color: #0056b3;
 }

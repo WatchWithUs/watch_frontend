@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import MoviePage from "./pages/MoviePage";
 import CollectionPage from "./pages/CollectionPage";
-import CollectionDetailPage from "./pages/CollectionDetailPage"; // Importe o CollectionDetailPage
+import CollectionDetailPage from "./pages/CollectionDetailPage"; 
 import Signup from "./components/Signup";
 //import Login from "./components/Login";
 

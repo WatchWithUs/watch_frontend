@@ -17,18 +17,14 @@ function CreateFormMovie() {
     const [movie, setMovie] = useState(DEFAULT_FILM_FORM_VALUES);
 
     const handleFormSubmit = (e) => {
-       // if (movie) {
         e.preventDefault();
         axios
             .post(`${API_URL}/movies`, movie)
             .then((response) => {
                 const newMovie = response.data;
-                setMovie(DEFAULT_FILM_FORM_VALUES); // Limpa os valores do filme após o envio bem-sucedido
+                setMovie(DEFAULT_FILM_FORM_VALUES);
             })
             .catch((error) => console.log(error));
-        // } else {
-        //     console.error("Movie data is not defined");
-        // }
     };
 
     const handleInputChange = (e) => {
