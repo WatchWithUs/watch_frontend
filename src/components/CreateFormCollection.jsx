@@ -93,7 +93,6 @@ function CreateFormCollection() {
               <input
                 type="checkbox"
                 id={`movie-${movie._id}`}
-                value={movie._id}
                 checked={collection.selectedMovies.includes(movie._id)}
                 onChange={() => handleMovieSelect(movie._id)}
               />
@@ -103,7 +102,7 @@ function CreateFormCollection() {
         </ul>
         <button type="submit" className="create-form-collection-button">
           Create Collection
-        </button>
+        </button>{" "}
       </form>
     </div>
   );

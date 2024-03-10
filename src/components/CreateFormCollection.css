@@ -1,11 +1,20 @@
-
 .create-form-collection-container {
-  max-width: 300px;
+  max-width: 1000px;
   margin: 0 auto;
+  max-height: 400px;
+  overflow-y: auto;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.collection-box {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 .create-form-collection-container h2 {
