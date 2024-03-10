@@ -7,7 +7,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 const DEFAULT_COLLECTION_FORM_VALUES = {
   title: "",
   description: "",
-  movies: [],
+  selectedMovies: [],
 };
 
 function CreateFormCollection() {
@@ -47,48 +47,63 @@ function CreateFormCollection() {
   };
 
   const handleMovieSelect = (movieId) => {
-    setCollection((prevCollection) => ({
-      ...prevCollection,
-      movies: [...prevCollection.movies, movieId],
-    }));
+    if (collection.selectedMovies.includes(movieId)) {
+      setCollection((prevCollection) => ({
+        ...prevCollection,
+        selectedMovies: prevCollection.selectedMovies.filter(
+          (id) => id !== movieId
+        ),
+      }));
+    } else {
+      setCollection((prevCollection) => ({
+        ...prevCollection,
+        selectedMovies: [...prevCollection.selectedMovies, movieId],
+      }));
+    }
   };
 
   return (
     <div className="create-form-collection-container">
       <h2>Create Collection</h2>
       <form onSubmit={handleFormSubmit}>
-        <label htmlFor="title">Title:</label>
-        <input
-          type="text"
-          name="title"
-          id="title"
-          value={collection.title}
-          onChange={handleInputChange}
-        />
-        <label htmlFor="description">Description:</label>
-        <input
-          type="text"
-          name="description"
-          id="description"
-          value={collection.description}
-          onChange={handleInputChange}
-        />
+        <div className="form-group">
+          <label htmlFor="title">Title:</label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            value={collection.title}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="description">Description:</label>
+          <input
+            type="text"
+            name="description"
+            id="description"
+            value={collection.description}
+            onChange={handleInputChange}
+          />
+        </div>
         <h3>Movies</h3>
         <ul className="create-form-collection-movies">
           {movies.map((movie) => (
-            <li key={movie.id}>
+            <li key={movie._id}>
               <input
                 type="checkbox"
-                id={`movie-${movie.id}`}
-                onChange={() => handleMovieSelect(movie.id)}
+                id={`movie-${movie._id}`}
+                value={movie._id}
+                checked={collection.selectedMovies.includes(movie._id)}
+                onChange={() => handleMovieSelect(movie._id)}
               />
-              <label htmlFor={`movie-${movie.id}`}>{movie.title}</label>
+              <label htmlFor={`movie-${movie._id}`}>{movie.title}</label>
             </li>
           ))}
         </ul>
         <button type="submit" className="create-form-collection-button">
           Create Collection
-        </button>{" "}
+        </button>
       </form>
     </div>
   );
