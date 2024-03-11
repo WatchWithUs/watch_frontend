@@ -8,6 +8,7 @@ import CollectionPage from "./pages/CollectionPage";
 import Signup from "./components/Signup";
 import LoginPage from "./components/LoginPage";
 import CollectionListPage from "./pages/CollectionListPage";
+import UpdateCollectionPage from "./pages/UpdateCollectionPage"; // Importe a página de atualização
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/movieForm" element={<MoviePage />} />
         <Route path="/collectionForm" element={<CollectionPage />} />
         <Route path="/collectionList" element={<CollectionListPage />} />
+        <Route path="/collections/:id/update" element={<UpdateCollectionPage />} /> {/* Rota para a página de atualização */}
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>

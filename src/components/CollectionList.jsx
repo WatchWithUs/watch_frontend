@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const API_URL = "http://localhost:5005"; 
 
@@ -12,7 +13,7 @@ function CollectionList() {
 
   const fetchCollections = async () => {
     try {
-      const response = await axios.get(`${API_URL}/collection`); 
+      const response = await axios.get(`${API_URL}/collection`);
       setCollections(response.data);
     } catch (error) {
       console.error('Error fetching collections:', error);
@@ -21,7 +22,7 @@ function CollectionList() {
 
   const handleDeleteCollection = async (collectionId) => {
     try {
-      await axios.delete(`${API_URL}/collection/${collectionId}`); 
+      await axios.delete(`${API_URL}/collection/${collectionId}`);
       fetchCollections();
     } catch (error) {
       console.error('Error deleting collection:', error);
@@ -42,6 +43,7 @@ function CollectionList() {
               ))}
             </ul>
             <button onClick={() => handleDeleteCollection(collection._id)}>Delete</button>
+            <Link to={`/collections/${collection._id}/update`}>Update</Link>
           </li>
         ))}
       </ul>
