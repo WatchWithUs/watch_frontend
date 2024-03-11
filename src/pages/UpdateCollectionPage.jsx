@@ -9,6 +9,9 @@ function UpdateCollectionPage() {
   const [collection, setCollection] = useState({});
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [movies, setMovies] = useState([]);
+  const [newMovie, setNewMovie] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchCollection();
@@ -20,6 +23,7 @@ function UpdateCollectionPage() {
       setCollection(response.data);
       setTitle(response.data.title);
       setDescription(response.data.description);
+      setMovies(response.data.movies);
     } catch (error) {
       console.error('Error fetching collection:', error);
     }
@@ -27,11 +31,41 @@ function UpdateCollectionPage() {
 
   const handleUpdateCollection = async () => {
     try {
-      await axios.put(`${API_URL}/collection/${id}`, { title, description });
+      setIsLoading(true);
+      await axios.put(`${API_URL}/collection/${id}`, { title, description, movies });
+      setIsLoading(false);
       // Redirecionar para a página de coleções após a atualização
       window.location.href = "/collectionList";
     } catch (error) {
+      setIsLoading(false);
       console.error('Error updating collection:', error);
+    }
+  };
+
+  const handleDeleteMovie = async (movieId) => {
+    try {
+      const updatedMovies = movies.filter(movie => movie._id !== movieId);
+      setMovies(updatedMovies);
+      await axios.put(`${API_URL}/collection/${id}`, { title, description, movies: updatedMovies });
+      console.log('Movie deleted successfully');
+    } catch (error) {
+      console.error('Error deleting movie:', error);
+    }
+  };
+
+  const handleAddMovie = async () => {
+    try {
+      if (newMovie.trim() !== "") {
+        const updatedMovies = [...movies, { title: newMovie }];
+        setMovies(updatedMovies);
+        // Atualiza a coleção no servidor com o novo filme adicionado
+        await axios.put(`${API_URL}/collection/${id}`, { title, description, movies: updatedMovies });
+        console.log('Movie added successfully');
+        // Limpa o campo de entrada após adicionar o filme
+        setNewMovie("");
+      }
+    } catch (error) {
+      console.error('Error adding movie:', error);
     }
   };
 
@@ -46,7 +80,24 @@ function UpdateCollectionPage() {
         <label>Description:</label>
         <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
       </div>
-      <button onClick={handleUpdateCollection}>Update</button>
+      <div>
+        <h4>Movies:</h4>
+        <ul>
+          {movies.map(movie => (
+            <li key={movie._id}>
+              {movie.title}
+              <button onClick={() => handleDeleteMovie(movie._id)}>Delete</button>
+            </li>
+          ))}
+        </ul>
+        <div>
+          <input type="text" value={newMovie} onChange={(e) => setNewMovie(e.target.value)} />
+          <button onClick={handleAddMovie}>Add Movie</button>
+        </div>
+      </div>
+      <button onClick={handleUpdateCollection} disabled={isLoading}>
+        {isLoading ? 'Updating...' : 'Update'}
+      </button>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './CollectionList.css'; 
 
 const API_URL = "http://localhost:5005"; 
 
@@ -30,20 +31,20 @@ function CollectionList() {
   };
 
   return (
-    <div>
+    <div className="collection-list">
       <h3>Collections</h3>
       <ul>
         {collections.map(collection => (
-          <li key={collection._id}>
-            <h4>{collection.title}</h4>
-            <p>{collection.description}</p>
-            <ul>
+          <li key={collection._id} className="collection-item"> {/* Adicionando uma classe CSS para o item da coleção */}
+            <h4 className="collection-title">{collection.title}</h4> {/* Adicionando a classe CSS para o título da coleção */}
+            <p className="collection-description">{collection.description}</p> {/* Adicionando a classe CSS para a descrição da coleção */}
+            <ul className="movie-list"> {/* Adicionando a classe CSS para a lista de filmes */}
               {collection.movies.map(movie => (
                 <li key={movie._id}>{movie.title}</li>
               ))}
             </ul>
-            <button onClick={() => handleDeleteCollection(collection._id)}>Delete</button>
-            <Link to={`/collections/${collection._id}/update`}>Update</Link>
+            <button className="button" onClick={() => handleDeleteCollection(collection._id)}>Delete</button> {/* Adicionando a classe CSS para o botão de exclusão */}
+            <Link className="button" to={`/collections/${collection._id}/update`}>Update</Link> {/* Adicionando a classe CSS para o botão de atualização */}
           </li>
         ))}
       </ul>
