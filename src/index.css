@@ -73,11 +73,11 @@ button:focus-visible {
   }
 }
 
-/* Adicione suas regras de mídia aqui */
+
 @media screen and (max-width: 768px) {
-  /* Suas regras de estilo para telas menores que 768px */
+
 }
 
 @media screen and (min-width: 769px) {
-  /* Suas regras de estilo para telas maiores ou iguais a 769px */
+
 }

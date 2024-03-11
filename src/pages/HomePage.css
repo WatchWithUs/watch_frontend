@@ -6,8 +6,8 @@
     min-height: 100vh;
     background-size: cover;
     background-position: center;
-    padding: 0 500px; /* Adiciona um pequeno preenchimento para evitar que o conteúdo encoste nas bordas */
-    box-sizing: border-box; /* Certifica-se de que o preenchimento está incluído na largura/altura total */
+    padding: 0 500px; 
+    box-sizing: border-box; 
   }
   
   .homepage-content {
@@ -16,8 +16,8 @@
   }
   
   .homepage-logo {
-    width: 500px; /* Aumenta o tamanho do logotipo */
-    max-width: 80%; /* Define uma largura máxima para evitar que a imagem seja muito grande em monitores menores */
+    width: 500px;
+    max-width: 80%;
   }
   
   .homepage-buttons {

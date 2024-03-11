@@ -16,6 +16,11 @@ function Navbar() {
       <Link to="/movieForm">
         <button>Create Movie</button>
       </Link>
+
+      <Link to="/collectionList">
+        <button>Collections</button>
+      </Link>
+
     </nav>
   );
 }
