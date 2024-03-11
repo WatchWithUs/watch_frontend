@@ -15,7 +15,8 @@ function LoginPage() {
   const authContext = useContext(AuthContext);//debug
   console.log("AuthContext", authContext); //debug
 
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+  //const { storeToken, authenticateUser } = useContext(AuthContext);
+  const { storeToken } = useContext(AuthContext);
   
 
   const handleEmail = (e) => setEmail(e.target.value);
@@ -30,8 +31,8 @@ function LoginPage() {
       .then((response) => {
         console.log("JWT token", response.data.authToken);
 
-        storeToken(response.data.authToken);
-        authenticateUser();
+      //  storeToken(response.data.authToken);
+       // authenticateUser();
         navigate("/");//change it
       })
       .catch((error) => {

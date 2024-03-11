@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Signup.css";
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";//server
+const API_URL = "http://localhost:5005";
 
 const Signup = () => {
   const [username, setUsername] = useState("");

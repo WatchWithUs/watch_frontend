@@ -17,29 +17,29 @@ function AuthProviderWrapper(props){
     }
 
     /* Authenticate the User via JWT */
-    const authenticateUser = () => {
-        const storedToken = localStorage.getItem('authToken');
-        if (storedToken) {
-           // axios.get(`${API_URL}/auth/verify`, { headers: { Authorization: `Bearer ${storedToken}` } })
-           axios.get(`${API_URL}/auth/verify`)
-                .then((response) => {
-                    const user = response.data; 
-                    setIsLoggedIn(true);
-                    setUser(user);
-                    setIsLoading(false);
-                })
-            .catch(()=>{
-                setIsLoggedIn(false);
-                setIsLoading(true);
-                setUser(null);
-            })
-        }
-        else {
-            setIsLoggedIn(false);
-            setIsLoading(true);
-            setUser(null);
-        }
-    }
+    // const authenticateUser = () => {
+    //     const storedToken = localStorage.getItem('authToken');
+    //     if (storedToken) {
+    //        // axios.get(`${API_URL}/auth/verify`, { headers: { Authorization: `Bearer ${storedToken}` } })
+    //        axios.get(`${API_URL}/auth/verify`)
+    //             .then((response) => {
+    //                 const user = response.data; 
+    //                 setIsLoggedIn(true);
+    //                 setUser(user);
+    //                 setIsLoading(false);
+    //             })
+    //         .catch(()=>{
+    //             setIsLoggedIn(false);
+    //             setIsLoading(true);
+    //             setUser(null);
+    //         })
+    //     }
+    //     else {
+    //         setIsLoggedIn(false);
+    //         setIsLoading(true);
+    //         setUser(null);
+    //     }
+    // }
 
     const removeToken = () =>{
         localStorage.removeItem('authToken');
@@ -51,13 +51,17 @@ function AuthProviderWrapper(props){
     }
 
     useEffect(()=>{
-        authenticateUser();
+      //  authenticateUser();
     }, []);
 
     return(
-         <AuthContext.Provider value={{isLoggedIn, isLoading, user, setUser, storeToken, authenticateUser, logOut, getToken}}>
-             {props.children}
-         </AuthContext.Provider>
+        //  <AuthContext.Provider value={{isLoggedIn, isLoading, user, setUser, storeToken, authenticateUser, logOut, getToken}}>
+        //      {props.children}
+        //  </AuthContext.Provider>
+
+        <AuthContext.Provider value={{ isLoggedIn, isLoading, user }}>
+        {props.children}
+      </AuthContext.Provider>
 
 
     )   

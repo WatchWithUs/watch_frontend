@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import MoviePage from "./pages/MoviePage";
 import CollectionPage from "./pages/CollectionPage";
 import Signup from "./components/Signup";
+import LoginPage from "./components/LoginPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/movieForm" element={<MoviePage />} />
         <Route path="/collectionForm" element={<CollectionPage />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
