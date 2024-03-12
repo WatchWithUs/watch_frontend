@@ -35,6 +35,7 @@ function UpdateCollectionPage() {
       await axios.put(`${API_URL}/collection/${id}`, { title, description, movies });
       setIsLoading(false);
       window.location.href = "/collectionList";
+      console.log('movies: ',movies)
     } catch (error) {
       setIsLoading(false);
       console.error('Error updating collection:', error);
@@ -80,8 +81,8 @@ function UpdateCollectionPage() {
       <div>
         <h4>Movies:</h4>
         <ul>
-          {movies.map(movie => (
-            <li key={movie._id}>
+          {movies.map((movie, index) => (
+            <li key={index}>
               {movie.title}
               <button onClick={() => handleDeleteMovie(movie._id)}>Remove</button>
             </li>
@@ -100,3 +101,15 @@ function UpdateCollectionPage() {
 }
 
 export default UpdateCollectionPage;
+// import React from 'react';
+// import UpdateCollection from "../components/UpdateCollection";
+
+// function UpdateCollectionPage() {
+//   return (
+//     <div>
+//       <UpdateCollection />
+//     </div>
+//   );
+// }
+
+// export default UpdateCollectionPage;

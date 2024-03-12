@@ -6,6 +6,7 @@ function UpdateCollection({ collectionId }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [movies, setMovies] = useState([]);
+  const [newMovie, setNewMovie] = useState("");
   const [isUpdating, setIsUpdating] = useState(false);
 
   useEffect(() => {
@@ -48,6 +49,24 @@ function UpdateCollection({ collectionId }) {
     setDescription(event.target.value);
   };
 
+  const handleAddMovie = async () => {
+    try {
+      if (newMovie.trim() !== "") {
+        const updatedMovies = [...movies, { title: newMovie }];
+        setMovies(updatedMovies);
+        setNewMovie(""); // Reset input field after adding movie
+        await axios.put(`${API_URL}/collection/${collectionId}`, {
+          title: title,
+          description: description,
+          movies: updatedMovies
+        });
+        console.log('Movie added successfully');
+      }
+    } catch (error) {
+      console.error('Error adding movie:', error);
+    }
+  };
+
   const handleDeleteMovie = async (movieId) => {
     try {
       const updatedMovies = movies.filter(movie => movie._id !== movieId);
@@ -86,6 +105,10 @@ function UpdateCollection({ collectionId }) {
             </li>
           ))}
         </ul>
+        <div>
+          <input type="text" value={newMovie} onChange={(e) => setNewMovie(e.target.value)} />
+          <button onClick={handleAddMovie}>Add Movie</button>
+        </div>
       </div>
       <button onClick={handleUpdateCollection} disabled={isUpdating}>
         {isUpdating ? 'Updating...' : 'Update Collection'}
