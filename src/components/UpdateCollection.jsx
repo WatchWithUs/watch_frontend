@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL;
-
 function UpdateCollection({ collectionId }) {
-  const [collection, setCollection] = useState({});
+  const API_URL = process.env.REACT_APP_API_URL;
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [movies, setMovies] = useState([]);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   useEffect(() => {
     fetchCollectionDetails();
@@ -16,7 +15,6 @@ function UpdateCollection({ collectionId }) {
   const fetchCollectionDetails = async () => {
     try {
       const response = await axios.get(`${API_URL}/collection/${collectionId}`);
-      setCollection(response.data);
       setTitle(response.data.title);
       setDescription(response.data.description);
       setMovies(response.data.movies);
@@ -27,13 +25,17 @@ function UpdateCollection({ collectionId }) {
 
   const handleUpdateCollection = async () => {
     try {
+      setIsUpdating(true);
       await axios.put(`${API_URL}/collection/${collectionId}`, {
         title: title,
         description: description,
         movies: movies
       });
+
+      setIsUpdating(false);
       console.log('Collection updated successfully');
     } catch (error) {
+      setIsUpdating(false);
       console.error('Error updating collection:', error);
     }
   };
@@ -48,33 +50,18 @@ function UpdateCollection({ collectionId }) {
 
   const handleDeleteMovie = async (movieId) => {
     try {
-   
       const updatedMovies = movies.filter(movie => movie._id !== movieId);
       setMovies(updatedMovies);
- 
+
       await axios.put(`${API_URL}/collection/${collectionId}`, {
         title: title,
         description: description,
         movies: updatedMovies
       });
+
       console.log('Movie deleted successfully');
     } catch (error) {
       console.error('Error deleting movie:', error);
-    }
-  };
-
-  const handleAddMovie = async (newMovieTitle) => {
-    try {
-      const updatedMovies = [...movies, { title: newMovieTitle }];
-      setMovies(updatedMovies);
-      await axios.put(`${API_URL}/collection/${collectionId}`, {
-        title: title,
-        description: description,
-        movies: updatedMovies
-      });
-      console.log('Movie added successfully');
-    } catch (error) {
-      console.error('Error adding movie:', error);
     }
   };
 
@@ -95,12 +82,14 @@ function UpdateCollection({ collectionId }) {
           {movies.map(movie => (
             <li key={movie._id}>
               {movie.title}
-              <button onClick={() => handleDeleteMovie(movie._id)}>Delete</button>
+              <button onClick={() => handleDeleteMovie(movie._id)}>Remove</button>
             </li>
           ))}
         </ul>
       </div>
-      <button onClick={handleUpdateCollection}>Update Collection</button>
+      <button onClick={handleUpdateCollection} disabled={isUpdating}>
+        {isUpdating ? 'Updating...' : 'Update Collection'}
+      </button>
     </div>
   );
 }

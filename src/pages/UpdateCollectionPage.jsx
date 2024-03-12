@@ -57,9 +57,9 @@ function UpdateCollectionPage() {
       if (newMovie.trim() !== "") {
         const updatedMovies = [...movies, { title: newMovie }];
         setMovies(updatedMovies);
+        setNewMovie(""); // Reset input field after adding movie
         await axios.put(`${API_URL}/collection/${id}`, { title, description, movies: updatedMovies });
         console.log('Movie added successfully');
-        setNewMovie("");
       }
     } catch (error) {
       console.error('Error adding movie:', error);
@@ -83,7 +83,7 @@ function UpdateCollectionPage() {
           {movies.map(movie => (
             <li key={movie._id}>
               {movie.title}
-              <button onClick={() => handleDeleteMovie(movie._id)}>Delete</button>
+              <button onClick={() => handleDeleteMovie(movie._id)}>Remove</button>
             </li>
           ))}
         </ul>
