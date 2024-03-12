@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-
 const API_URL = import.meta.env.VITE_API_URL;
-
 const AuthContext = React.createContext();
 function AuthProviderWrapper(props){
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -12,6 +10,9 @@ function AuthProviderWrapper(props){
     /* Store the token in the local storage */
     const storeToken = (token) =>{
         localStorage.setItem('authToken', token);
+    }
+    const removeToken = () =>{
+        localStorage.removeItem('authToken');
     }
     /* Authenticate the User via JWT */
     const authenticateUser = () => {
@@ -37,9 +38,6 @@ function AuthProviderWrapper(props){
             setUser(null);
         }
     }
-    const removeToken = () =>{
-        localStorage.removeItem('authToken');
-    }
     const logOut = () =>{
         removeToken();
         authenticateUser();
@@ -53,4 +51,5 @@ function AuthProviderWrapper(props){
          </AuthContext.Provider>
     )
 }
- export {AuthProviderWrapper, AuthContext};
+ //export {AuthProviderWrapper, AuthContext, logOut};
+ export {AuthProviderWrapper, AuthContext}

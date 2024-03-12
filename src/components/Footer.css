@@ -5,9 +5,16 @@
   width: 100%;
   background-color: #333;
   color: white;
-  padding: 1px;
+  padding: 10px; /* Aumenta o padding para melhor legibilidade */
   text-align: center;
   z-index: 1;
+  display: flex;
+  justify-content: space-between; /* Alinha os itens para esquerda e direita */
+  align-items: center; /* Centraliza verticalmente */
+}
+
+.UserEmail {
+  margin-left: 10px; /* Adiciona um espaço entre "User:" e o email do usuário */
 }
 
 .Footer p {
@@ -19,8 +26,7 @@
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  align-items: center; /* Centraliza os links verticalmente */
 }
 
 .Footer-links li {

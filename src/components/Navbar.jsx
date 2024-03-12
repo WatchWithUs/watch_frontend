@@ -1,26 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import { AuthContext } from '../Context/auth.context';
 
 function Navbar() {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogout = () => {
+    // Perform the logout functionality
+    logOut();
+  };
+
   return (
     <nav className="navbar">
-      <Link to="/">
-        <button>Home</button>
-      </Link>
-
-      <Link to="/collectionForm">
-        <button>Create Collections</button>
-      </Link>
-
-      <Link to="/movieForm">
-        <button>Create Movie</button>
-      </Link>
-
-      <Link to="/collectionList">
-        <button>Collections</button>
-      </Link>
-
+      <Link to="/" className="navbar-link">Home</Link>
+      <Link to="/collectionForm" className="navbar-link">Create Collections</Link>
+      <Link to="/movieForm" className="navbar-link">Create Movie</Link>
+      <Link to="/collectionList" className="navbar-link">Collections</Link>
+      {user && <button onClick={handleLogout} className="logout-btn">Logout</button>}
     </nav>
   );
 }

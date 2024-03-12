@@ -1,27 +1,40 @@
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar button {
-    margin-right: 10px;
-  }
-  
-  .navbar form {
-    margin-left: auto; /* Move o formulário de pesquisa para a direita */
-  }
-  
-  .navbar input[type="text"] {
-    padding: 5px;
-    margin-right: 5px;
-  }
-  
-  .navbar input[type="submit"] {
-    padding: 5px 10px;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar button, .navbar a {
+  margin-right: 10px;
+  color: white; /* Define a cor dos links e botões */
+  text-decoration: none; /* Remove a sublinhado dos links */
+}
+
+.navbar button, .navbar input[type="submit"], .navbar a {
+  padding: 8px 16px; /* Ajusta o preenchimento para consistência */
+  background-color: #555; /* Cor de exemplo para os botões */
+  border: none;
+  cursor: pointer;
+}
+
+.navbar button.logout-btn {
+  margin-left: auto; /* Move o botão de logout para a direita */
+}
+
+.navbar form {
+  margin-left: auto; /* Move o formulário de pesquisa para a direita */
+}
+
+.navbar input[type="text"] {
+  padding: 5px;
+  margin-right: 5px;
+}
+
+.navbar input[type="submit"] {
+  padding: 5px 10px;
+}
