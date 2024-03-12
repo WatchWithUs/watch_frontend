@@ -5,16 +5,16 @@
   width: 100%;
   background-color: #333;
   color: white;
-  padding: 10px; /* Aumenta o padding para melhor legibilidade */
+  padding: 10px;
   text-align: center;
   z-index: 1;
   display: flex;
-  justify-content: space-between; /* Alinha os itens para esquerda e direita */
-  align-items: center; /* Centraliza verticalmente */
+  justify-content: space-between;
+  align-items: center;
 }
 
 .UserEmail {
-  margin-left: 10px; /* Adiciona um espaço entre "User:" e o email do usuário */
+  margin-left: 10px;
 }
 
 .Footer p {
@@ -26,7 +26,7 @@
   padding: 0;
   margin: 0;
   display: flex;
-  align-items: center; /* Centraliza os links verticalmente */
+  align-items: center;
 }
 
 .Footer-links li {
