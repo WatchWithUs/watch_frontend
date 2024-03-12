@@ -9,25 +9,32 @@
   align-items: center;
 }
 
-.navbar button, .navbar a {
+.navbar button,
+.navbar a {
   margin-right: 10px;
-  color: white; /* Define a cor dos links e botões */
-  text-decoration: none; /* Remove a sublinhado dos links */
-}
-
-.navbar button, .navbar input[type="submit"], .navbar a {
-  padding: 8px 16px; /* Ajusta o preenchimento para consistência */
-  background-color: #555; /* Cor de exemplo para os botões */
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  background-color: #555;
   border: none;
   cursor: pointer;
+  border-radius: 20px;
 }
 
 .navbar button.logout-btn {
-  margin-left: auto; /* Move o botão de logout para a direita */
+  margin-left: auto;
+  background-color: #CC0000;
+}
+
+.navbar button,
+.navbar a:hover,
+.navbar button.logout-btn:hover {
+  background-color: #777;
+  color: white;
 }
 
 .navbar form {
-  margin-left: auto; /* Move o formulário de pesquisa para a direita */
+  margin-left: auto;
 }
 
 .navbar input[type="text"] {
