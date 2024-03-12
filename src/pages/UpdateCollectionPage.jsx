@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-const API_URL = "http://localhost:5005"; 
+const API_URL = import.meta.env.VITE_API_URL; 
 
 function UpdateCollectionPage() {
   const { id } = useParams();
@@ -34,7 +34,6 @@ function UpdateCollectionPage() {
       setIsLoading(true);
       await axios.put(`${API_URL}/collection/${id}`, { title, description, movies });
       setIsLoading(false);
-      // Redirecionar para a página de coleções após a atualização
       window.location.href = "/collectionList";
     } catch (error) {
       setIsLoading(false);
@@ -58,10 +57,8 @@ function UpdateCollectionPage() {
       if (newMovie.trim() !== "") {
         const updatedMovies = [...movies, { title: newMovie }];
         setMovies(updatedMovies);
-        // Atualiza a coleção no servidor com o novo filme adicionado
         await axios.put(`${API_URL}/collection/${id}`, { title, description, movies: updatedMovies });
         console.log('Movie added successfully');
-        // Limpa o campo de entrada após adicionar o filme
         setNewMovie("");
       }
     } catch (error) {

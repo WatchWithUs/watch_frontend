@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/auth.context";
 import "./LoginPage.css"; // Importa o arquivo CSS
 
-const API_URL = "http://localhost:5005";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function LoginPage() {
   const [email, setEmail] = useState("");

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_URL = "http://localhost:5005"; 
+const API_URL = import.meta.env.VITE_API_URL;
 
 function UpdateCollection({ collectionId }) {
   const [collection, setCollection] = useState({});
@@ -33,7 +33,6 @@ function UpdateCollection({ collectionId }) {
         movies: movies
       });
       console.log('Collection updated successfully');
-      // Adicione qualquer lógica adicional aqui após a atualização bem-sucedida
     } catch (error) {
       console.error('Error updating collection:', error);
     }
@@ -49,11 +48,10 @@ function UpdateCollection({ collectionId }) {
 
   const handleDeleteMovie = async (movieId) => {
     try {
-      // Remover o filme localmente da lista de filmes
+   
       const updatedMovies = movies.filter(movie => movie._id !== movieId);
       setMovies(updatedMovies);
-      
-      // Atualizar a coleção no servidor sem o filme excluído
+ 
       await axios.put(`${API_URL}/collection/${collectionId}`, {
         title: title,
         description: description,
@@ -67,11 +65,8 @@ function UpdateCollection({ collectionId }) {
 
   const handleAddMovie = async (newMovieTitle) => {
     try {
-      // Adicionar o novo filme localmente à lista de filmes
       const updatedMovies = [...movies, { title: newMovieTitle }];
       setMovies(updatedMovies);
-      
-      // Atualizar a coleção no servidor com o novo filme adicionado
       await axios.put(`${API_URL}/collection/${collectionId}`, {
         title: title,
         description: description,
