@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Signup.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -8,6 +9,7 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +20,8 @@ const Signup = () => {
         password: password,
       });
       console.log(response.data);
-      
+      // Redireciona para a página de login após o signup bem-sucedido
+      navigate("/login");
     } catch (error) {
       console.error("Error:", error);
     }
