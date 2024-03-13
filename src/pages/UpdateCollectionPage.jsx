@@ -32,7 +32,7 @@ function UpdateCollectionPage() {
   const handleUpdateCollection = async () => {
     try {
       setIsLoading(true);
-      await axios.put(`${API_URL}/collection/${id}`, { title, description, movies });
+      await axios.put(`${API_URL}/collection/${id}`, { title, description, selectedMovies: movies });
       setIsLoading(false);
       window.location.href = "/collectionList";
       console.log('movies: ',movies)
@@ -42,28 +42,18 @@ function UpdateCollectionPage() {
     }
   };
 
-  const handleDeleteMovie = async (movieId) => {
-    try {
-      const updatedMovies = movies.filter(movie => movie._id !== movieId);
-      setMovies(updatedMovies);
-      await axios.put(`${API_URL}/collection/${id}`, { title, description, movies: updatedMovies });
-      console.log('Movie deleted successfully');
-    } catch (error) {
-      console.error('Error deleting movie:', error);
-    }
+  const handleDeleteMovie = (movieId) => {
+    const updatedMovies = movies.filter(movie => movie._id !== movieId);
+    setMovies(updatedMovies);
+    console.log('Movie deleted successfully');
   };
 
-  const handleAddMovie = async () => {
-    try {
-      if (newMovie.trim() !== "") {
-        const updatedMovies = [...movies, { title: newMovie }];
-        setMovies(updatedMovies);
-        setNewMovie(""); // Reset input field after adding movie
-        await axios.put(`${API_URL}/collection/${id}`, { title, description, movies: updatedMovies });
-        console.log('Movie added successfully');
-      }
-    } catch (error) {
-      console.error('Error adding movie:', error);
+  const handleAddMovie = () => {
+    if (newMovie.trim() !== "") {
+      const updatedMovies = [...movies, { title: newMovie }];
+      setMovies(updatedMovies);
+      setNewMovie(""); // Reset input field after adding movie
+      console.log('Movie added successfully');
     }
   };
 
@@ -101,15 +91,3 @@ function UpdateCollectionPage() {
 }
 
 export default UpdateCollectionPage;
-// import React from 'react';
-// import UpdateCollection from "../components/UpdateCollection";
-
-// function UpdateCollectionPage() {
-//   return (
-//     <div>
-//       <UpdateCollection />
-//     </div>
-//   );
-// }
-
-// export default UpdateCollectionPage;

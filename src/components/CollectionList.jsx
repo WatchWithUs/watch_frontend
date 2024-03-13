@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './CollectionList.css'; 
+import Logout from './Logout';
 
 const API_URL = import.meta.env.VITE_API_URL; 
 
@@ -16,6 +17,7 @@ function CollectionList() {
     try {
       const response = await axios.get(`${API_URL}/collection`);
       setCollections(response.data);
+      console.log(collections)
     } catch (error) {
       console.error('Error fetching collections:', error);
     }
