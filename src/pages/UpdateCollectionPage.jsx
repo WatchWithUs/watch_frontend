@@ -10,8 +10,8 @@ function UpdateCollectionPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [movies, setMovies] = useState([]);
-  const [selectedMovies, setSelectedMovies] = useState([]); // Lista de filmes selecionados
-  const [availableMovies, setAvailableMovies] = useState([]); // Lista de filmes disponíveis para adição
+  const [selectedMovies, setSelectedMovies] = useState([]);
+  const [availableMovies, setAvailableMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -59,9 +59,9 @@ function UpdateCollectionPage() {
   };
 
   const handleAddMovies = () => {
-    const updatedMovies = [...movies, ...selectedMovies]; // Adicionando todos os filmes selecionados
+    const updatedMovies = [...movies, ...selectedMovies];
     setMovies(updatedMovies);
-    setSelectedMovies([]); // Limpa a lista de filmes selecionados após a adição
+    setSelectedMovies([]);
     console.log('Movies added successfully');
   };
 

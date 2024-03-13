@@ -1,5 +1,4 @@
 import React from "react";
-//import "./Footer.css";
 function LogoLoggedIn(props) {
     console.log('LogoLoggedIn: ',props)
   return (

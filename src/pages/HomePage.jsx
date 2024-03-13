@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../Context/auth.context"; // Importe o contexto de autenticação
+import { AuthContext } from "../Context/auth.context"; 
 import "./HomePage.css";
 
 function HomePage() {
-  const { isLoggedIn } = useContext(AuthContext); // Acesse o estado de autenticação do contexto
+  const { isLoggedIn } = useContext(AuthContext); 
 
   return (
     <div className="homepage-container">
@@ -12,7 +12,6 @@ function HomePage() {
       <div className="homepage-content">
         <img src="WatchWhitUslogo.png" alt="Logo" className="homepage-logo" />
         <div className="homepage-buttons">
-          {/* Renderização condicional dos botões com base no estado de autenticação */}
           {!isLoggedIn && (
             <>
               <Link to="/signup" className="button button-signup">

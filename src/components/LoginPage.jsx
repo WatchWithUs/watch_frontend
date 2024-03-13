@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/auth.context";
-import "./LoginPage.css"; // Importa o arquivo CSS
+import "./LoginPage.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -27,7 +27,7 @@ function LoginPage() {
       .then((response) => {
         storeToken(response.data.authToken);
         authenticateUser();
-        navigate("/"); //change it
+        navigate("/");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
@@ -36,8 +36,8 @@ function LoginPage() {
   };
 
   return (
-    <div className="login-container"> {/* Alteração da classe para 'login-container' */}
-      <form onSubmit={handleLoginSubmit} className="login-form"> {/* Alteração da classe para 'login-form' */}
+    <div className="login-container">
+      <form onSubmit={handleLoginSubmit} className="login-form">
         <h3>Login</h3>
         <label htmlFor="email">Email</label>
         <input

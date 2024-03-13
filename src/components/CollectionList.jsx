@@ -37,16 +37,16 @@ function CollectionList() {
       <h3>Collections</h3>
       <ul>
         {collections.map(collection => (
-          <li key={collection._id} className="collection-item"> {/* Adicionando uma classe CSS para o item da coleção */}
-            <h4 className="collection-title">{collection.title}</h4> {/* Adicionando a classe CSS para o título da coleção */}
-            <p className="collection-description">{collection.description}</p> {/* Adicionando a classe CSS para a descrição da coleção */}
-            <ul className="movie-list"> {/* Adicionando a classe CSS para a lista de filmes */}
+          <li key={collection._id} className="collection-item"> 
+            <h4 className="collection-title">{collection.title}</h4> 
+            <p className="collection-description">{collection.description}</p> 
+            <ul className="movie-list">
               {collection.movies.map(movie => (
                 <li key={movie._id}>{movie.title}</li>
               ))}
             </ul>
-            <button className="button" onClick={() => handleDeleteCollection(collection._id)}>Delete</button> {/* Adicionando a classe CSS para o botão de exclusão */}
-            <Link className="button" to={`/collections/${collection._id}/update`}>Update</Link> {/* Adicionando a classe CSS para o botão de atualização */}
+            <button className="button" onClick={() => handleDeleteCollection(collection._id)}>Delete</button>
+            <Link className="button" to={`/collections/${collection._id}/update`}>Update</Link> 
           </li>
         ))}
       </ul>

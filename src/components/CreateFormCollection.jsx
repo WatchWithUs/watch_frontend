@@ -14,7 +14,7 @@ const DEFAULT_COLLECTION_FORM_VALUES = {
 function CreateFormCollection() {
   const [collection, setCollection] = useState(DEFAULT_COLLECTION_FORM_VALUES);
   const [movies, setMovies] = useState([]);
-  const navigate = useNavigate(); // Obter a função navigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchMovies();

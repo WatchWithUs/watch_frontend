@@ -15,6 +15,7 @@ const DEFAULT_FILM_FORM_VALUES = {
 function CreateFormMovie() {
 
     const [movie, setMovie] = useState(DEFAULT_FILM_FORM_VALUES);
+    const [showAlert, setShowAlert] = useState(false);
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -23,6 +24,8 @@ function CreateFormMovie() {
             .then((response) => {
                 const newMovie = response.data;
                 setMovie(DEFAULT_FILM_FORM_VALUES);
+                setShowAlert(true);
+                setTimeout(() => setShowAlert(false), 3000);
             })
             .catch((error) => console.log(error));
     };
@@ -81,6 +84,7 @@ function CreateFormMovie() {
                 />
                 <button type="submit">Submit</button>
             </form>
+            {showAlert && <div className="alert">Movie Created...</div>}
         </div>
     );
 }
