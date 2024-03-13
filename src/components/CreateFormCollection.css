@@ -60,7 +60,8 @@
 .form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px; /* pour un espacement entre les groupes */
+  margin-bottom: 15px; 
+  width:80vh;
 }
 
 .form-group label {
