@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./CreateFormCollection.css";
+import { useNavigate } from "react-router-dom";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -13,6 +14,7 @@ const DEFAULT_COLLECTION_FORM_VALUES = {
 function CreateFormCollection() {
   const [collection, setCollection] = useState(DEFAULT_COLLECTION_FORM_VALUES);
   const [movies, setMovies] = useState([]);
+  const navigate = useNavigate(); // Obter a função navigate
 
   useEffect(() => {
     fetchMovies();
@@ -33,6 +35,7 @@ function CreateFormCollection() {
       const response = await axios.post(`${API_URL}/collection`, collection);
       console.log("Collection created:", response.data);
       setCollection(DEFAULT_COLLECTION_FORM_VALUES);
+      navigate("/collectionList");
     } catch (error) {
       console.error("Error creating collection:", error);
     }

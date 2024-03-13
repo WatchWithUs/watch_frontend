@@ -20,7 +20,6 @@ const Signup = () => {
         password: password,
       });
       console.log(response.data);
-      // Redireciona para a página de login após o signup bem-sucedido
       navigate("/login");
     } catch (error) {
       console.error("Error:", error);
