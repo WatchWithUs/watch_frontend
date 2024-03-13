@@ -55,3 +55,14 @@
 .create-form-collection-button:hover {
   background-color: #0056b3;
 }
+
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px; /* pour un espacement entre les groupes */
+}
+
+.form-group label {
+  margin-bottom: 5px; /* pour un espacement entre le label et l'input */
+}
