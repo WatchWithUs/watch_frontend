@@ -9,6 +9,7 @@ import Signup from "./components/Signup";
 import LoginPage from "./components/LoginPage";
 import CollectionListPage from "./pages/CollectionListPage";
 import UpdateCollectionPage from "./pages/UpdateCollectionPage"; 
+import IsPrivate from "./components/IsPrivate";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route path="/movieForm" element={<MoviePage />} />
         <Route path="/collectionForm" element={<CollectionPage />} />
         <Route path="/collectionList" element={<CollectionListPage />} />
-        <Route path="/collections/:id/update" element={<UpdateCollectionPage />} /> 
+        <Route path="/collections/:id/update" element={ <IsPrivate> <UpdateCollectionPage /> </IsPrivate>} /> 
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
