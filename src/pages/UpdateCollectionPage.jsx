@@ -24,6 +24,7 @@ function UpdateCollectionPage() {
       setTitle(response.data.title);
       setDescription(response.data.description);
       setMovies(response.data.movies);
+      console.log('id: ',id);
     } catch (error) {
       console.error('Error fetching collection:', error);
     }
