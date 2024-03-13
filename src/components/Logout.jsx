@@ -1,7 +1,9 @@
 import React from 'react';
-import {logOut} from '../Context/auth.context'
+import { AuthContext } from "../Context/auth.context";
 
 function Logout() {
+  
+  const { logOut } = useContext(AuthContext);
 
   return (
     <button onClick={logOut}>Logout</button>
