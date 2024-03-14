@@ -1,42 +1,49 @@
 .collection-list {
-    padding: 20px;
-  }
-  
-  .collection-item {
-    background-color: hsla(0, 0%, 0%, 0.226);
-    padding: 20px;
-    border-radius: 8px;
-    border-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    list-style: none;
-  }
-  
-  .collection-title {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .collection-description {
-    margin-bottom: 10px;
-  }
-  
-  .movie-list {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .button {
-    margin-right: 10px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-  }
-  
-  .button:hover {
-    background-color: #0056b3;
-  }
+  padding: 20px;
+  text-align: center; /* Adiciona alinhamento centralizado */
+}
+
+.collection-list h3 {
+  margin-bottom: 20px; /* Adiciona um espaço extra abaixo do título */
+}
+
+.collection-item {
+  background-color: hsla(0, 0%, 0%, 0.226);
+  padding: 20px;
+  border-radius: 8px;
+  border-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  list-style: none;
+}
+
+.collection-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.collection-description {
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.movie-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.button {
+  margin-right: 10px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}

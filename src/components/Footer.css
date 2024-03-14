@@ -45,4 +45,5 @@
 .Footer-links li a:hover {
   background-color: white;
   color: #333;
+  text-align: center;
 }
