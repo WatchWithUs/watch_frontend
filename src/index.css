@@ -26,7 +26,10 @@ a {
   text-decoration: inherit;
 }
 
-@media screen and (prefers-color-scheme: light) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+  
+
   :root {
     color: #213547;
     background-color: #ffffff;
