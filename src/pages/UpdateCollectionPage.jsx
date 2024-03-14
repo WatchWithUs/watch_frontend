@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import './UpdateCollectionPage.css'; // Importe o arquivo CSS
 
-const API_URL = import.meta.env.VITE_API_URL; 
+const API_URL = import.meta.env.VITE_API_URL;
 
 function UpdateCollectionPage() {
   const { id } = useParams();
@@ -44,7 +45,7 @@ function UpdateCollectionPage() {
     const token = localStorage.getItem("authToken");
     try {
       setIsLoading(true);
-      await axios.put(`${API_URL}/collection/${id}`, { title, description, selectedMovies: movies }, {headers: { Authorization: `Bearer ${token}` }}, );
+      await axios.put(`${API_URL}/collection/${id}`, { title, description, selectedMovies: movies }, { headers: { Authorization: `Bearer ${token}` } });
       setIsLoading(false);
       window.location.href = "/collectionList";
     } catch (error) {
@@ -60,15 +61,20 @@ function UpdateCollectionPage() {
   };
 
   const handleAddMovies = () => {
-    const updatedMovies = [...movies, ...selectedMovies];
+    // Filtra os filmes disponíveis selecionados com base nos IDs selecionados
+    const selectedMoviesDetails = availableMovies.filter(movie => selectedMovies.includes(movie._id));
+    
+    // Adiciona os filmes selecionados à coleção
+    const updatedMovies = [...movies, ...selectedMoviesDetails];
     setMovies(updatedMovies);
-    setSelectedMovies([]);
+    setSelectedMovies([]); // Limpa os filmes selecionados
+
     console.log('Movies added successfully');
   };
 
   return (
-    <div>
-      <h3>Update Collection</h3>
+    <div className="container">
+      <h3>Update Your Collection</h3>
       <div>
         <label>Title:</label>
         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -89,7 +95,7 @@ function UpdateCollectionPage() {
         </ul>
       </div>
       <div>
-        <h4>Select Movies to Add:</h4>
+        <h4>📽️Select Movies to Add:</h4>
         <select multiple value={selectedMovies} onChange={(e) => setSelectedMovies([...e.target.selectedOptions].map(option => option.value))}>
           {availableMovies.map((movie, index) => (
             <option key={index} value={movie._id}>{movie.title}</option>
