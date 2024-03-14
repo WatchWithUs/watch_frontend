@@ -1,10 +1,10 @@
 .collection-list {
   padding: 20px;
-  text-align: center; /* Adiciona alinhamento centralizado */
+  text-align: center; 
 }
 
 .collection-list h3 {
-  margin-bottom: 20px; /* Adiciona um espaço extra abaixo do título */
+  margin-bottom: 20px; 
 }
 
 .collection-item {

@@ -1,5 +1,5 @@
 .create-form-collection-container {
-  max-width: 1000px;
+  max-width: 600px;
   margin: 0 auto;
   max-height: 400px;
   overflow-y: auto;
@@ -7,7 +7,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
 }
 
 .collection-box {
@@ -59,14 +58,30 @@
   border-color: #0056b3;
 }
 
-
 .form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px; 
-  width:80vh;
+  margin-bottom: 15px;
 }
 
 .form-group label {
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-group button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 10%;
+  cursor: pointer;
+}
+
+.form-group button:hover {
+  background-color: #0056b3;
 }

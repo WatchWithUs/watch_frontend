@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import './UpdateCollectionPage.css'; // Importe o arquivo CSS
+import './UpdateCollectionPage.css';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -61,13 +61,13 @@ function UpdateCollectionPage() {
   };
 
   const handleAddMovies = () => {
-    // Filtra os filmes disponíveis selecionados com base nos IDs selecionados
+   
     const selectedMoviesDetails = availableMovies.filter(movie => selectedMovies.includes(movie._id));
     
-    // Adiciona os filmes selecionados à coleção
+    
     const updatedMovies = [...movies, ...selectedMoviesDetails];
     setMovies(updatedMovies);
-    setSelectedMovies([]); // Limpa os filmes selecionados
+    setSelectedMovies([]); 
 
     console.log('Movies added successfully');
   };
@@ -85,11 +85,11 @@ function UpdateCollectionPage() {
       </div>
       <div>
         <h4>Movies:</h4>
-        <ul>
+        <ul className='movie-container'>
           {movies.map((movie, index) => (
             <li key={index}>
               {movie.title}
-              <button onClick={() => handleDeleteMovie(movie._id)}>Remove</button>
+              <button onClick={() => handleDeleteMovie(movie._id)}>❌</button>
             </li>
           ))}
         </ul>
