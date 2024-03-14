@@ -1,4 +1,4 @@
-.homepage-container {
+/* .homepage-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +8,7 @@
   background-position: center;
   padding: 0 500px; 
   box-sizing: border-box; 
-}
+} */
 
 .homepage-content {
   text-align: center;
