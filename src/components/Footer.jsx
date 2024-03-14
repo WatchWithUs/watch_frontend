@@ -8,7 +8,7 @@ function Footer() {
   return (
     <div className="Footer">
       <div className="UserEmail">
-        {isLoggedIn && <p>User: {user.email}</p>}
+        {isLoggedIn && <p>User: {user.name}</p>}
       </div>
       <div className="Copyright">
         <p>Copyright © 2024</p>
