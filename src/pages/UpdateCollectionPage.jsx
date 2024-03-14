@@ -41,9 +41,10 @@ function UpdateCollectionPage() {
   };
 
   const handleUpdateCollection = async () => {
+    const token = localStorage.getItem("authToken");
     try {
       setIsLoading(true);
-      await axios.put(`${API_URL}/collection/${id}`, { title, description, selectedMovies: movies });
+      await axios.put(`${API_URL}/collection/${id}`, { title, description, selectedMovies: movies }, {headers: { Authorization: `Bearer ${token}` }}, );
       setIsLoading(false);
       window.location.href = "/collectionList";
     } catch (error) {

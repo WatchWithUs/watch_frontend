@@ -24,8 +24,9 @@ function CollectionList() {
   };
 
   const handleDeleteCollection = async (collectionId) => {
+    const token = localStorage.getItem("authToken");
     try {
-      await axios.delete(`${API_URL}/collection/${collectionId}`);
+      await axios.delete(`${API_URL}/collection/${collectionId}`,{headers: { Authorization: `Bearer ${token}` }} );
       fetchCollections();
     } catch (error) {
       console.error('Error deleting collection:', error);
