@@ -60,8 +60,19 @@
     cursor: not-allowed;
   }
 
-  .movie-container{
+  .movie-container li {
     display: flex;
-    flex-direction: column;
-    justify-content:space-between;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .movie-container li button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .movie-container li button:hover {
+    color: red;
   }

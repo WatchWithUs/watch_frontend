@@ -86,13 +86,13 @@ function UpdateCollectionPage() {
       <div>
         <h4>Movies:</h4>
         <ul className='movie-container'>
-          {movies.map((movie, index) => (
-            <li key={index}>
-              {movie.title}
-              <button onClick={() => handleDeleteMovie(movie._id)}>❌</button>
-            </li>
-          ))}
-        </ul>
+  {movies.map((movie, index) => (
+    <li key={index}>
+      <span>{movie.title}</span>
+      <button onClick={() => handleDeleteMovie(movie._id)}>❌</button>
+    </li>
+  ))}
+</ul>
       </div>
       <div>
         <h4>📽️Select Movies to Add:</h4>
