@@ -5,7 +5,7 @@
 
 ## About
 
-REST API for a project management app.
+WatchWhitUs is a project app that allows users to create a list of movies and a personalized collection for each user. <br>Users can authenticate to access additional features such as deleting and updating their collections.
 
 - This repo implements the backend REST API (built in Express + MongoDB).
 - A repository for with the frontend (React App) can be found here:[ (https://github.com/WatchWithUs/watch_frontend) ](https://github.com/WatchWithUs/watch_frontend)
