@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './UpdateCollectionPage.css';
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -14,7 +14,7 @@ function UpdateCollectionPage() {
   const [selectedMovies, setSelectedMovies] = useState([]);
   const [availableMovies, setAvailableMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetchCollection();
     fetchAvailableMovies();
@@ -47,7 +47,7 @@ function UpdateCollectionPage() {
       setIsLoading(true);
       await axios.put(`${API_URL}/collection/${id}`, { title, description, selectedMovies: movies }, { headers: { Authorization: `Bearer ${token}` } });
       setIsLoading(false);
-      window.location.href = "/collectionList";
+      navigate("/collectionList");
     } catch (error) {
       setIsLoading(false);
       console.error('Error updating collection:', error);

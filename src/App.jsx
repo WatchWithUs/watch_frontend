@@ -17,9 +17,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/movieForm" element={<MoviePage />} />
-        <Route path="/collectionForm" element={<CollectionPage />} />
-        <Route path="/collectionList" element={<CollectionListPage />} />
+        <Route path="/movieForm" element={<IsPrivate><MoviePage /></IsPrivate>} />
+        <Route path="/collectionForm" element={<IsPrivate><CollectionPage /></IsPrivate>} />
+        <Route path="/collectionList" element={<IsPrivate><CollectionListPage /></IsPrivate>} />
         <Route path="/collections/:id/update" element={ <IsPrivate> <UpdateCollectionPage /> </IsPrivate>} /> 
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<LoginPage />} />
