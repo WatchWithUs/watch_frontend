@@ -85,3 +85,19 @@
 .form-group button:hover {
   background-color: #0056b3;
 }
+/*** ***/
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  width: 300px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  align-self: flex-start; 
+}
+
+.create-form-collection-movies input[type="checkbox"] {
+  margin-right: 10px; /* space between the case and the text */
+}
