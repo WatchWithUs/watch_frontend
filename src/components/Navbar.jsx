@@ -4,10 +4,14 @@ import './Navbar.css';
 import { AuthContext } from '../Context/auth.context';
 
 function Navbar() {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, isLoggedIn } = useContext(AuthContext);
   const handleLogout = () => {
     logOut();
   };
+
+  if (!isLoggedIn) {
+    return null;
+  }
 
   return (
     <nav className="navbar">

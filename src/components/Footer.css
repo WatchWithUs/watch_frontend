@@ -34,11 +34,11 @@
 }
 
 .Footer-links li a {
-  color: white;
+  color: rgb(255, 255, 255);
   text-decoration: none;
   padding: 5px 10px;
   border: 1px solid white;
-  border-radius: 3px;
+  border-radius: 5px;
   font-size: 12px;
 }
 
